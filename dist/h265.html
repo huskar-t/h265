@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="lib/libffmpeg.js"></script>
+    <script src="bundle.js"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            display: inline-flex;
+        }
+        #playCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="playCanvas" style="width: 100%;height: 100%"></canvas>
+<script>
+    function getUrlParam(name) {
+        //let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        let reg = new RegExp("(^|&)" + name + "=(.*.$)"); // 构造一个含有目标参数的正则表达式对象匹配到最后
+        let r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; // 返回参数值
+    }
+
+    let url = getUrlParam("url")
+    // canvas名,rtsp地址,wesocket地址,解析线程数(实际情况来调整数量多会cpu占用高)，缓存队列长度
+    let video = new Video.Video("playCanvas", url, "ws://127.0.0.1:32000/ws",10,0)
+</script>
+</body>
