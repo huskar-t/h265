@@ -10,8 +10,8 @@
     "rollup-plugin-babel": "^4.4.0",
     "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "webpack-cli":"^3.3.12",
-    "webpack":"^4.44.0"
+    "webpack-cli":"^5.0.1",
+    "webpack":"^5.75.0"
   },
   "scripts": {
     "build": "webpack"
